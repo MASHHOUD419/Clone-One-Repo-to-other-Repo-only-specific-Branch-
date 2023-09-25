@@ -1,0 +1,63 @@
+# Clone One Repo to Another Repo with a Specific Branch
+
+## Introduction
+
+This document provides step-by-step instructions on how to clone a Git repository from one source repository to another destination repository, while copying only a specific branch. This process is useful when you want to replicate a single branch from one repository to another, possibly on different hosting platforms like GitHub, GitLab, or Bitbucket.
+
+**Note:** This process is intended for advanced users familiar with Git. Ensure you have the necessary permissions and access to both repositories.
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+1. **Git**: Installed Git on your local machine. You can download and install Git from [https://git-scm.com/](https://git-scm.com/).
+
+2. **Access to Source Repository**: You should have read access to the source repository from which you want to clone the branch.
+
+3. **Access to Destination Repository**: You should have write access to the destination repository where you want to push the branch.
+
+## Procedure
+
+Follow these steps to clone a specific branch from the source repository to the destination repository.
+
+### 1. Clone the Source Repository
+
+Open your terminal or command prompt and execute the following command to clone the source repository. Replace `(Source Repo URL)` with the URL of the source repository:
+
+```shell
+git clone --mirror (Source Repo URL)
+```
+
+This command clones the entire source repository as a bare repository, including all branches, tags, and commit history.
+
+### 2. Navigate to the Source Repository
+
+Navigate to the cloned source repository's directory using the `cd` command. Replace `(Source Repo)` with the name of the source repository directory:
+
+```shell
+cd (Source Repo)
+```
+
+### 3. Add the Destination Repository as a Remote
+
+Add the destination repository as a remote to the source repository using the following command. Replace `(Destination Repo URL)` with the URL of the destination repository:
+
+```shell
+git remote add github (Destination Repo URL)
+```
+
+This command sets up a remote named "github" pointing to the destination repository.
+
+### 4. Push the Specific Branch to the Destination Repository
+
+Push the specific branch from the source repository to the destination repository using the following command. Replace `refs/heads/main` with the branch name you want to clone, and `refs/heads/main` with the branch name you want it to be in the destination repository:
+
+```shell
+git push github 'refs/heads/main:refs/heads/main'
+```
+
+Replace `'refs/heads/main:refs/heads/main'` with the appropriate source and destination branch references.
+
+## Conclusion
+
+You have successfully cloned a specific branch from one Git repository to another while preserving branch history. This process is useful for maintaining specific branches across different repositories or platforms. Remember to adjust branch names and URLs according to your specific use case.
