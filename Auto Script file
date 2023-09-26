@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Replace 'YOUR_GITHUB_PAT' with your actual GitHub Personal Access Token
+GITHUB_PAT="GITHUB_PAT_HERE"
+
+# Replace 'YOUR_AZURE_PAT' with your actual Azure DevOps Personal Access Token
+AZURE_PAT="AZURE_PAT_HERE"
+
+# Clone the source repository as a mirror using the Azure DevOps PAT for authentication
+git clone --mirror https://analogmutations:$AZURE_PAT@dev.azure.com/analogmutations/Ethical%20Node/_git/ethicalnode-chain-registry
+cd ethicalnode-chain-registry.git/
+
+# Add a remote for the target repository on GitHub using the GitHub PAT for authentication
+git remote add github https://$GITHUB_PAT@github.com/analog-mutations/en-chains-registry.git
+
+# Push the main branch to the GitHub repository
+git push github 'refs/heads/main:refs/heads/main'
+
+# Optionally, you can clean up the temporary clone directory if needed
+# cd ..
+# rm -rf ethicalnode-chain-registry.git/
